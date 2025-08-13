@@ -50,7 +50,7 @@ The goal of the project is to provide an intuitive and fast e-commerce interface
 
 2. **Navigate to the project directory**
    ```bash
-   cd Phone catalog
+   cd Phone-catalog
   
 3. **Install dependencies**
    ```bash
