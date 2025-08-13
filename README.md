@@ -45,11 +45,11 @@ The goal of the project is to provide an intuitive and fast e-commerce interface
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yurzxw/Creative-Bakery.git
+   git clone https://github.com/yurzxw/Phone-catalog.git
 
 2. **Navigate to the project directory**
    ```bash
-   cd Creative-Bakery
+   cd Phone catalog
   
 3. **Install dependencies**
    ```bash
