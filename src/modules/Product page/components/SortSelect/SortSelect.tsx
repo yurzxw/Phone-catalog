@@ -11,10 +11,15 @@ export const SortSelect: React.FC = () => {
     { value: 'price', label: t('sortSelect.price') },
     { value: 'title', label: t('sortSelect.alphabet') },
   ];
-  const [selectedOption, setSelectedOption] = React.useState(options[0]);
+
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialSortValue = searchParams.get('sort') || 'title';
+  const initialOption = options.find(option => option.value === initialSortValue);
+
+  const [selectedOption, setSelectedOption] = React.useState(initialOption || options[2]); 
   const [isOpen, setIsOpen] = React.useState(false);
-  //const sort = searchParams.get('sort') || 'age';
+  
   const dropdownRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -33,6 +38,7 @@ export const SortSelect: React.FC = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+  
   const handleSortChange = option => {
     setSelectedOption(option);
     const newParams = new URLSearchParams(searchParams);

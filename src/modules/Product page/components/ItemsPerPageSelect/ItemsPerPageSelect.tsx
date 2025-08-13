@@ -11,8 +11,11 @@ const options = [
 
 export const ItemsPerPageSelect: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  // const itemsPerPage = searchParams.get('perPage') || '16';
-  const [selectedOption, setSelectedOption] = React.useState(options[0]);
+
+  const initialPerPageValue = searchParams.get('perPage') || '16';
+  const initialOption = options.find(option => option.value === initialPerPageValue) || options[2];
+  
+  const [selectedOption, setSelectedOption] = React.useState(initialOption);
   const [isOpen, setIsOpen] = React.useState(false);
   const dropdownRef = React.useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
@@ -38,7 +41,7 @@ export const ItemsPerPageSelect: React.FC = () => {
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('perPage', option.value);
-    newParams.set('page', '1'); // Reset to page 1
+    newParams.set('page', '1');
     setSearchParams(newParams);
     setIsOpen(false);
   };

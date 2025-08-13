@@ -22,7 +22,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [data, setData] = React.useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort');
+  const sort = searchParams.get('sort') || 'title';
   const perPageParam = searchParams.get('perPage');
   const perPage =
     perPageParam === 'all' ? 0 : parseInt(perPageParam || '16', 10);
@@ -63,7 +63,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     loadData(`./api/products.json`);
   }, [category]);
 
-  // Filter data by query
   const queriedData = React.useMemo(() => {
     if (!query) {
       return data;
@@ -72,7 +71,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     return data.filter(product => product.name.toLowerCase().includes(query));
   }, [data, query]);
 
-  // Sort data
   const sortedData = React.useMemo(() => {
     if (!queriedData) {
       return [];
@@ -86,15 +84,14 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       case 'price':
         return [...queriedData].sort((a, b) => a.price - b.price);
       default:
-        return queriedData;
+        return [...queriedData].sort((a, b) => a.name.localeCompare(b.name));
     }
   }, [queriedData, sort]);
 
-  // Paginate data
   const paginatedData = React.useMemo(() => {
     if (perPage === 0) {
       return sortedData;
-    } // Show all items
+    } 
 
     const start = (page - 1) * perPage;
 
