@@ -18,6 +18,7 @@ The goal of the project is to provide an intuitive and fast e-commerce interface
 - 🛒 **Shopping cart** — add, remove, and update product quantities
 - ❤️ **Favorites** — save products to your wishlist
 - 🌍 **Multilingual support** — via `i18next` and `react-i18next`
+- 🛠 **BEM methodology** — structured and reusable CSS class naming
 - 📱 **Responsive design** — works seamlessly on mobile, tablet, and desktop
 - 🎠 **Image sliders & animations** — powered by `react-slick` and `framer-motion`
 - 💾 **Local storage persistence** — keep cart and favorites saved between sessions
